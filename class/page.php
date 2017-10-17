@@ -17,15 +17,6 @@ abstract class page
         printOut::printThis($this->html);
     }
 
-    public function get()
-    {
-        echo 'default get message';
-    }
-
-    public function post()
-    {
-        print_r($_POST);
-    }
-}
+   }
 
 ?>

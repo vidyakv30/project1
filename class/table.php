@@ -6,10 +6,13 @@ class table extends page
         if (isset($_REQUEST['file'])) {
             $target_file = $_REQUEST['file'];
         }
+        //Get the file name and display as a heading on the Table page
 
         $file_name = substr($target_file,(strpos($target_file,'/')+1));
 
         $this->html.="<h1>$file_name</h1>";
+
+        //Read the csv file and display an HTML table contents with table headings.
         $file = fopen($target_file, "r");
         $this->html .= '<table>';
         for ($i = 0;!feof($file); $i++) {
