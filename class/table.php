@@ -8,9 +8,9 @@ class table extends page
         }
         //Get the file name and display as a heading on the Table page
 
-        $file_name = substr($target_file,(strpos($target_file,'/')+1));
+        $file_name = substr($target_file, (strpos($target_file, '/') + 1));
 
-        $this->html.="<h1>$file_name</h1>";
+        $this->html .= "<h1>$file_name</h1>";
 
         //Read the csv file and display an HTML table contents with table headings.
         $file = fopen($target_file, "r");
@@ -32,6 +32,13 @@ class table extends page
         }
         fclose($file);
         $this->html .= '</table>';
+
+        //Linkto upload another file
+        $this->html .= '<br/><hr>';
+        $form = '<form action="index.php" method="get"
+        enctype="multipart/form-data">';
+        $form .= '<input type="submit" value="Upload Another File" name="submit">';
+        $this->html .= $form;
 
     }
 
