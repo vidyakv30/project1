@@ -5,7 +5,7 @@ class homepage extends page
 
     public function get()
     {
-//Create an HTML form to upload the file
+        //Create an HTML form to upload the file
 
         $form = '<form action="index.php" method="post"
         enctype="multipart/form-data">';
