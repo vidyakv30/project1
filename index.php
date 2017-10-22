@@ -26,7 +26,7 @@ class main
     public function __construct()
     {
         //set to default page
-        $pageRequest = 'homepage';
+        $pageRequest = 'homePage';
         //check for parameters
         if (isset($_REQUEST['page'])) {
             $pageRequest = $_REQUEST['page'];
@@ -42,3 +42,4 @@ class main
 
     }
 }
+?>
