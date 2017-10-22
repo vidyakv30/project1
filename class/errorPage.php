@@ -17,3 +17,4 @@ class errorPage extends page
 
     }
 }
+?>

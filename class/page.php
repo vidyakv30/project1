@@ -14,7 +14,7 @@ abstract class page
     public function __destruct()
     {
         $this->html .= '</body></html>';
-        printOut::printThis($this->html);
+        printHtmlTags::printThis($this->html);
     }
 
    }

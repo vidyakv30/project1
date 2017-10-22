@@ -10,31 +10,38 @@ class table extends page
 
         $file_name = substr($target_file, (strpos($target_file, '/') + 1));
 
-        $this->html .= "<h1>$file_name</h1>";
+        $this->html .= printHtmlTags::headingOne("$file_name");
 
-        //Read the csv file and display an HTML table contents with table headings.
+        //Read the csv file and display  HTML table  with table headings.
+
         $file = fopen($target_file, "r");
-        $this->html .= '<table>';
-        for ($i = 0;!feof($file); $i++) {
-            $this->html .= '<tr>';
-            $htmlTable = fgetcsv($file);
-            $openTag   = "<td>";
-            $closeTag  = "</td>";
-            if ($i == 0) {
-                $openTag  = "<th>";
-                $closeTag = "</th>";
-            }
-            foreach ($htmlTable as $cell) {
 
-                $this->html .= "$openTag" . "$cell" . "$closeTag";
+        $this->html .= printHtmlTags::printThis('<table>');
+
+        for ($i = 0;!feof($file); $i++) {
+
+            $this->html .= printHtmlTags::printThis('<tr>');
+
+            $htmlTable = fgetcsv($file);
+
+            foreach ($htmlTable as $cell) {
+                if ($i == 0) {
+
+                    $this->html .= printHtmlTags::tableHeader($cell);
+                } else {
+
+                    $this->html .= printHtmlTags::tableData($cell);
+                }
+
             }
-            $this->html .= '<tr>';
+            $this->html .= printHtmlTags::printThis('<tr>');
         }
         fclose($file);
-        $this->html .= '</table>';
+        $this->html .= printHtmlTags::printThis('</table>');
 
         //Linkto upload another file
-        $this->html .= '<br/><hr>';
+        $this->html .= printHtmlTags::printThis('<br/>');
+
         $form = '<form action="index.php" method="get"
         enctype="multipart/form-data">';
         $form .= '<input type="submit" value="Upload Another File" name="submit">';
@@ -43,3 +50,4 @@ class table extends page
     }
 
 }
+?>
